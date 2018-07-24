@@ -1,25 +1,36 @@
-//
-//  ViewController.swift
-//  FirebaseExample
-//
-//  Created by Gamze Güven on 22.07.2018.
-//  Copyright © 2018 Gamze Güven. All rights reserved.
-//
-
 import UIKit
 
-class ViewController: UIViewController {
+import Firebase
 
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var textFieldEmail: UITextField!
+    @IBOutlet weak var textFieldPassword: UITextField!
+
+    @IBOutlet weak var labelMessage: UILabel!
+    
+    @IBAction func buttonRegister(_ sender: UIButton) {
+    
+        let email = textFieldEmail.text
+        let password = textFieldPassword.text
+        
+        FIRAuth.auth()?.createUser(withEmail: email!, password: password!, completion: { (user: FIRUser?, error) in
+
+            if error == nil {
+                self.labelMessage.text = "You are successfully registered."
+            }else{
+                self.labelMessage.text = "Registration failed."
+            }
+            
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //FIRApp.configure()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
 }
-
