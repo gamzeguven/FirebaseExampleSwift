@@ -1,5 +1,4 @@
 import UIKit
-
 import Firebase
 
 class ViewController: UIViewController {
@@ -29,8 +28,5 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         //FIRApp.configure()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+
 }
